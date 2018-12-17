@@ -38,7 +38,7 @@ public class PessoaBean extends GenericBean {
 			pessoa.setApelido(apelido);
 			pessoa.setHistorico(historico);
 			pessoa.setFoto(getFoto());
-			pessoa.setInvestigacoes(getInvestigacoes());
+//			pessoa.setInvestigacoes(getInvestigacoes());
 			controller.cadastrar(pessoa);
 			this.addSuccessMessage("Pessoa criada com sucesso!");
 			proxView = "pessoas?faces-redirect=true";

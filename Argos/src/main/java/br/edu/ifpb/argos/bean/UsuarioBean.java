@@ -38,7 +38,7 @@ public class UsuarioBean extends GenericBean implements Serializable {
 		String proxView = null;
 
 		if (controller.buscarMatricula(this.matricula)) {
-			this.addErrorMessage("Já existe usuário cadastrado com a matricula informada!.");
+			this.addErrorMessage("Jï¿½ existe usuï¿½rio cadastrado com a matricula informada!.");
 			return "cadastro?faces-redirect=true";
 		}
 
@@ -66,7 +66,7 @@ public class UsuarioBean extends GenericBean implements Serializable {
 				proxView = "usuarios?faces-redirect=true";
 				usuario = new Usuario();
 			} catch (PersistenceException e) {
-				this.addErrorMessage("Erro ao tentar salvar o usuário.");
+				this.addErrorMessage("Erro ao tentar salvar o usuï¿½rio.");
 			}
 		}
 		return proxView;
@@ -84,7 +84,7 @@ public class UsuarioBean extends GenericBean implements Serializable {
 			proxView = "usuarios?faces-redirect=true";
 			usuario = new Usuario();
 		} catch (PersistenceException e) {
-			this.addErrorMessage("Erro ao tentar atualizar o usuário.");
+			this.addErrorMessage("Erro ao tentar atualizar o usuï¿½rio.");
 		}
 		return proxView;
 	}
@@ -103,12 +103,12 @@ public class UsuarioBean extends GenericBean implements Serializable {
 	public String excluir(Usuario usuario) {
 		String proxima_pagina = null;
 		if (usuario.getStatus() == true) {
-			this.addSuccessMessage("Usuário ativo não pode ser excluído");
+			this.addSuccessMessage("Usuï¿½rio ativo nï¿½o pode ser excluï¿½do");
 			proxima_pagina = "usuarios?faces-redirect=true";
 		} else {
 			UsuarioController controller = new UsuarioController();
 			controller.excluir(usuario);
-			this.addSuccessMessage("Usuário excluído com sucesso");
+			this.addSuccessMessage("Usuï¿½rio excluï¿½do com sucesso");
 			proxima_pagina = "usuarios?faces-redirect=true";
 		}
 		return proxima_pagina;
@@ -127,7 +127,7 @@ public class UsuarioBean extends GenericBean implements Serializable {
 		this.usuarios = controller.pesquisar(argumento);
 
 		if (usuarios.isEmpty())
-			this.addErrorMessage("Não há usuários para o argumento informado.");
+			this.addErrorMessage("Nï¿½o hï¿½ usuï¿½rios para o argumento informado.");
 		return "busca?faces-redirect=true&includeViewParams=true";
 	}
 

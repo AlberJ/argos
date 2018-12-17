@@ -37,9 +37,9 @@ public class Pessoa implements Serializable {
 	@Column(name = "HISTORICO")
 	private String historico;
 	
-	@OneToMany(mappedBy="pessoa")
-	@Column(name = "INVESTIGACOES")
-	private List<Investigacao> investigacoes;
+//	@ManyToMany(mappedBy="pessoa")
+//	@Column(name = "INVESTIGACOES")
+//	private List<Investigacao> investigacoes;
 	
 	
 	public Pessoa() {
@@ -93,11 +93,11 @@ public class Pessoa implements Serializable {
 		this.historico = historico;
 	}
 
-	public List<Investigacao> getInvestigacoes() {
-		return investigacoes;
-	}
-
-	public void setInvestigacoes(List<Investigacao> investigacoes) {
-		this.investigacoes = investigacoes;
-	}
+//	public List<Investigacao> getInvestigacoes() {
+//		return investigacoes;
+//	}
+//
+//	public void setInvestigacoes(List<Investigacao> investigacoes) {
+//		this.investigacoes = investigacoes;
+//	}
 }

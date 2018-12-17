@@ -4,32 +4,36 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <f:metadata>
-	<f:viewParam name="id" value="#{informacaoBean.id}" />
-	<f:viewParam name="titulo" value="#{informacaoBean.titulo}" />
-	<f:viewParam name="descricao" value="#{informacaoBean.descricao}" />
-	<f:viewParam name="editando" value="#{informacaoBean.editando}" />
+	<f:viewParam name="id" value="#{investigacaoBean.id}" />
+	<f:viewParam name="titulo" value="#{investigacaoBean.titulo}" />
+	<f:viewParam name="descricao" value="#{investigacaoBean.descricao}" />
+	<f:viewParam name="data" value="#{investigacaoBean.data}" />
 </f:metadata>
 <h:body>
 	<ui:composition template="../template/template.xhtml">
-		<ui:define name="ttitle">Informacao</ui:define>
+		<ui:define name="ttitle">Investigação</ui:define>
 		<ui:define name="tbody">
 
 			<h:form>
-				<h:inputHidden value="#{informacaoBean.id}"
+				<h:inputHidden value="#{investigacaoBean.id}"
 				               id="id" />
 				<p:tabView>
-					<p:tab title="Cadastro de nova Informacao">
+					<p:tab title="Cadastro de nova Investigação">
 						<h:panelGrid id="grid" 
 									 columns="4" 
 									 style="width:100%;">
-							<h:panelGrid rendered="#{not informacaoBean.editando}">
+							<h:panelGrid rendered="#{not investigacaoBean.editando}">
 								<p:outputLabel for="titulo" 
 								               value="Título "
 									           style="margin-top:5%" />
 								  <p:inputText id="titulo" 
 								               required="true"
 									           requiredMessage="Este campo é obrigatório"
-								     	       value="#{informacaoBean.titulo}" >
+								     	       value="#{investigacaoBean.titulo}" 
+								     	       minLength="6"
+									           maxlength="6">
+							  <f:convertNumber integerOnly="true" 
+						                       maxFractionDigits="0" />
 								</p:inputText>
 								<p:message for="titulo" 
 								           display="text" 
@@ -37,23 +41,24 @@
 							</h:panelGrid>
 							<h:panelGrid>
 								<p:outputLabel for="descricao" 
-								               value="descricao " 
+								               value="Descrição " 
 								               style="margin-top:5%" />
 								  <p:inputText id="descricao" 
 								               required="true"
 									           requiredMessage="Este campo é obrigatório" 
-									           value="#{informacaoBean.descricao}" />
+									           value="#{investigacaoBean.descricao}" />
 								    <p:message for="descricao"
 								               display="text" 
 								               showDetail="true" />
 							</h:panelGrid>
 							
-							<h:panelGrid>
-								<p:outputLabel for="data" value="Data " />
+						<h:panelGrid rendered="#{not investigacaoBean.editando}">
+								<p:outputLabel for="data" value="Início da investigação " />
 								<p:calendar 
 								           id="data" 
 								           required="true"
-								           value="#{informacaoBean.data}"
+								           requiredMessage="Este campo é obrigatório" 
+								           value="#{investigacaoBean.data}"
 									       pattern="dd-MM-yyyy"/>
 								<p:message for="data" 
 								           display="text" 
@@ -66,7 +71,7 @@
 							
 							<h:panelGrid columns="2">
 							<h:commandLink value="" 
-							               action="#{informacaoBean.salvar}"
+							               action="#{investigacaoBean.salvar}"
 							               id="bt_salvar">
 								           <i class="glyphicon glyphicon-floppy-saved" 
 								              style="font-size:2em;
